@@ -1,9 +1,21 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Selecione seu Mundo!</title>
     <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+      }
+
       body {
         margin: 0;
       }
@@ -25,7 +37,7 @@
         opacity: 0;
         transition: opacity 0.3s ease;
       }
-      .img div{
+      .img div {
         width: 300px;
         margin: auto;
         color: white;
@@ -120,6 +132,9 @@
         #logo img {
           width: 150px;
         }
+        #rodape span {
+            width: 100%;
+        }
       }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -138,9 +153,9 @@
     <div id="galeria">
       <a class="galeryLink">
         <div id="img0" class="img">
-            <div>
-                <span>asdf asdfasdf asdfasdf</span>
-            </div>
+          <div>
+            <span>asdf asdfasdf asdfasdf</span>
+          </div>
         </div>
         <img src="img2.png" alt="historia zumbi" />
       </a>
