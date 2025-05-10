@@ -127,7 +127,7 @@
           height: 86px;
         }
         #logo a {
-          width: 250px;
+          width: 150px;
         }
         #logo img {
           width: 150px;
@@ -178,14 +178,14 @@
 
 <script>
   function pararAnimarEdesaparecer() {
-    const el = document.querySelector(".pulse");
+    const el = document.querySelector("#rodape");
 
     // Remove a classe de animação pulse
     try {
-      el.classList.remove("pulse");
+      //el.classList.remove("pulse");
 
       // Força a opacidade atual antes da transição
-      getComputedStyle(el).opacity;
+      //getComputedStyle(el).opacity;
 
       // Define a transição de opacidade
       el.style.transition = "opacity 1s ease";
