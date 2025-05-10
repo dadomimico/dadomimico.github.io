@@ -1,1 +1,213 @@
-asdf
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selecione seu Mundo!</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      a.galeryLink {
+        width: 33.3%;
+        position: relative;
+        height: auto; /* ou um valor fixo, se precisar */
+        overflow: hidden;
+        transition: width 0.3s ease;
+      }
+      .img {
+        position: absolute;
+        width: 101%;
+        height: 101%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: black;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .img div{
+        width: 300px;
+        margin: auto;
+        color: white;
+        text-align: center;
+        position: sticky;
+        top: 45%;
+      }
+      a.galeryLink img {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      #galeria {
+        width: 100%;
+        height: 100%;
+        background: #2e2c2c;
+        display: flex;
+      }
+      #logo {
+        z-index: 3;
+        position: absolute;
+        height: 125px;
+        width: 100%;
+        background: linear-gradient(to bottom, black, transparent);
+      }
+      #logo img {
+        display: block;
+        width: 250px;
+        margin: 0 auto;
+      }
+      #logo a {
+        display: block;
+        width: 250px;
+        margin: 0 auto;
+        margin-top: 16px;
+      }
+      #rodape {
+        z-index: 3;
+        position: absolute;
+        bottom: 0;
+        height: 125px;
+        width: 100%;
+        background: linear-gradient(to top, black, transparent);
+      }
+      #rodape span {
+        font-family: "Bellefair", serif;
+        font-size: 33px;
+        text-align: center;
+        color: white;
+        margin: 0 auto;
+        margin-top: 37px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .pulse {
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @media only screen and (max-width: 768px) {
+        #galeria {
+          flex-direction: column;
+          flex-wrap: nowrap;
+        }
+        a.galeryLink {
+          width: 100%;
+          height: 33.3%;
+          transition: height 0.3s ease;
+        }
+        a.galeryLink img {
+          left: 50%;
+          top: 50%;
+          width: 110%;
+          transform: translate(-50%, -50%);
+        }
+        #logo {
+          height: 86px;
+        }
+        #logo a {
+          width: 250px;
+        }
+        #logo img {
+          width: 150px;
+        }
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="logo">
+      <a href="/"
+        ><img src="logo.png" alt="logo" aria-label="logo dado mímico"
+      /></a>
+    </div>
+    <div id="galeria">
+      <a class="galeryLink">
+        <div id="img0" class="img">
+            <div>
+                <span>asdf asdfasdf asdfasdf</span>
+            </div>
+        </div>
+        <img src="img2.png" alt="historia zumbi" />
+      </a>
+      <a class="galeryLink">
+        <div id="img1" class="img"></div>
+        <img src="img4.png" alt="historia futurista" />
+      </a>
+      <a class="galeryLink">
+        <div id="img2" class="img"></div>
+        <img src="img1.png" alt="historia zumbi" />
+      </a>
+    </div>
+    <div id="rodape">
+      <span class="pulse" aria-label="selecione seu mundo"
+        >SELECIONE SEU MUNDO!</span
+      >
+    </div>
+  </body>
+</html>
+
+<script>
+  function pararAnimarEdesaparecer() {
+    const el = document.querySelector(".pulse");
+
+    // Remove a classe de animação pulse
+    try {
+      el.classList.remove("pulse");
+
+      // Força a opacidade atual antes da transição
+      getComputedStyle(el).opacity;
+
+      // Define a transição de opacidade
+      el.style.transition = "opacity 1s ease";
+      el.style.opacity = "0";
+
+      // Quando a transição termina, remove o elemento
+      el.addEventListener("transitionend", () => {
+        try {
+          el.remove();
+        } catch (error) {}
+      });
+    } catch (error) {}
+  }
+
+  document.addEventListener("mouseover", (e) => {
+    if (innerWidth <= 768) {
+      for (let i = 0; i < 3; i++) {
+        if (e.target.id == "img" + i) {
+          document.querySelector("#img" + i).parentElement.style.height = "50%";
+          document.querySelector("#img" + i).style.opacity = "0.75";
+        } else if (e.target.id.includes("img")) {
+          document.querySelector("#img" + i).parentElement.style.height = "25%";
+          document.querySelector("#img" + i).style.opacity = "0";
+          pararAnimarEdesaparecer();
+        }
+      }
+    } else {
+      for (let i = 0; i < 3; i++) {
+        if (e.target.id == "img" + i) {
+          document.querySelector("#img" + i).parentElement.style.width = "50%";
+          document.querySelector("#img" + i).style.opacity = "0.75";
+        } else if (e.target.id.includes("img")) {
+          document.querySelector("#img" + i).parentElement.style.width = "25%";
+          document.querySelector("#img" + i).style.opacity = "0";
+          pararAnimarEdesaparecer();
+        }
+      }
+    }
+  });
+</script>
