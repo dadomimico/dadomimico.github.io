@@ -451,14 +451,14 @@
     } catch (error) { }
   });
 
-  document.addEventListener('touchstart', () => {
+  document.addEventListener('touchstart', (ev) => {
     try {
       if (ev.target.src.includes('imgIco')) {
         ev.target.nextElementSibling.style.opacity = '0';
       }
     } catch (error) { }
   });
-  document.addEventListener('touchend', () => {
+  document.addEventListener('touchend', (ev) => {
     try {
       if (ev.target.src.includes('imgIco')) {
         ev.target.nextElementSibling.style.opacity = '0.75';
