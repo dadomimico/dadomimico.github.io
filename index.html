@@ -204,7 +204,7 @@
         <img src="imgIco.ico"/>
         <div id="img0" class="img">
           <div>
-            <h1>Titulo</h1>
+            <h1>Crônicas do Início</h1>
             <span class="expandable" onclick="expandable('descricao','img0',0)">
               <h2>Descrição</h2>
               <h2 style="right: 7px">
@@ -212,9 +212,7 @@
               </h2>
             </span>
             <span class="expandText descricao img0">
-              lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-              lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-              orem ipsum lorem ipsum lorem ipsum lorem ipsum
+              A aventura começa no primeiro dia do surto, em um evento público. Os jogadores são pessoas comuns tentando entender o caos, tomar decisões rápidas e sobreviver. Ideal para criar laços fortes entre os personagens.
             </span>
             <span class="expandable" style="margin-top: 10px; margin-bottom: 5px;" onclick="expandable('sistema','img0',0)">
               <h2>Sistema</h2>
@@ -446,6 +444,21 @@
   });
 
   document.addEventListener('mouseup', (ev) => {
+    try {
+      if (ev.target.src.includes('imgIco')) {
+        ev.target.nextElementSibling.style.opacity = '0.75';
+      }
+    } catch (error) { }
+  });
+
+  document.addEventListener('touchstart', () => {
+    try {
+      if (ev.target.src.includes('imgIco')) {
+        ev.target.nextElementSibling.style.opacity = '0';
+      }
+    } catch (error) { }
+  });
+  document.addEventListener('touchend', () => {
     try {
       if (ev.target.src.includes('imgIco')) {
         ev.target.nextElementSibling.style.opacity = '0.75';
