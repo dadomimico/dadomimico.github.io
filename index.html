@@ -16,10 +16,7 @@
         width: 100%;
       }
 
-      body {
-        margin: 0;
-      }
-      a.galeryLink {
+      .galeryLink {
         width: 33.3%;
         position: relative;
         height: auto; /* ou um valor fixo, se precisar */
@@ -36,16 +33,21 @@
         z-index: 2;
         opacity: 0;
         transition: opacity 0.3s ease;
+        font-family: "Roboto", sans-serif;
       }
       .img div {
         width: 300px;
         margin: auto;
         color: white;
         text-align: center;
-        position: sticky;
+        position: relative;
         top: 45%;
+        transform: translateY(-50%);
       }
-      a.galeryLink img {
+      .img h1 {
+        user-select: none;
+      }
+      .galeryLink img {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -93,14 +95,45 @@
         left: 50%;
         transform: translateX(-50%);
       }
+      .expandable {
+        display: flex; 
+        justify-content: space-between;
+        cursor: pointer;
+        user-select: none;
+      }
+      .expandable h2 {
+        position: relative;
+        margin: 0
+      }
+      .expandable [src="setaBranca.ico"] {
+        width: 15px; 
+        height: 24px; 
+        position: absolute
+      }
+      .expandText {
+        display: none;
+        text-align: left;
+      }
+      .botaoForm{
+        text-decoration: none;
+        margin-top: 55px;
+        display: block;
+        color: white;
+        padding: 5px 10px;
+        border: 2px solid white;
+        user-select: none;
+      }
+      .botaoForm:hover{
+        background-color: #2e2c2c;
+      }
+
       .pulse {
         animation: pulse 3s ease-in-out infinite;
       }
-
       @keyframes pulse {
         0%,
         100% {
-          opacity: 0.3;
+          opacity: 0.1;
         }
         50% {
           opacity: 1;
@@ -112,12 +145,12 @@
           flex-direction: column;
           flex-wrap: nowrap;
         }
-        a.galeryLink {
+        .galeryLink {
           width: 100%;
           height: 33.3%;
           transition: height 0.3s ease;
         }
-        a.galeryLink img {
+        .galeryLink img {
           left: 50%;
           top: 50%;
           width: 110%;
@@ -125,24 +158,29 @@
         }
         #logo {
           height: 86px;
+          transition: all 1s ease;
         }
         #logo a {
           width: 150px;
         }
         #logo img {
           width: 150px;
+          transition: all 0.5s ease;
         }
         #rodape span {
-            width: 380px;
+          width: 380px;
+        }
+        h2{
+          font-size: 18px;
+        }
+        .expandText{
+          font-size: 15px;
         }
       }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="logo">
@@ -151,42 +189,142 @@
       /></a>
     </div>
     <div id="galeria">
-      <a class="galeryLink">
+      <div class="galeryLink">
         <div id="img0" class="img">
           <div>
-            <span>asdf asdfasdf asdfasdf</span>
+            <h1>Titulo</h1>
+            <span class="expandable" onclick="expandable('descricao','img0',0)">
+              <h2>Descrição</h2>
+              <h2 style="right: 7px">
+                <img src="setaBranca.ico"/>
+              </h2>
+            </span>
+            <span class="expandText descricao img0">
+              lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+              lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+              orem ipsum lorem ipsum lorem ipsum lorem ipsum
+            </span>
+            <span class="expandable" style="margin-top: 10px; margin-bottom: 5px;" onclick="expandable('sistema','img0',0)">
+              <h2>Sistema</h2>
+              <h2 style="right: 7px">
+                <img src="setaBranca.ico"/>
+              </h2>
+            </span>
+            <span class="expandText sistema img0">
+              <b>Fate Acelerado (<span style="color:#089aee;">muito fácil</span>):</b> O fate padrão já é um sistema simples, o fate acelerado então... Fate Acelerado é um RPG leve e narrativo, onde os personagens são definidos por frases criativas e estilos de ação. Foca na improvisação, narrativa colaborativa e liberdade total para criar qualquer tipo de história.
+            </span>
+            <span class="expandable" style="margin-top: 10px; margin-bottom: 5px;" onclick="expandable('preco','img0',0)">
+              <h2>Preços e Horários</h2>
+              <h2 style="right: 7px">
+                <img src="setaBranca.ico"/>
+              </h2>
+            </span>
+            <span class="expandText preco img0">
+              <b>Preços:</b> R$ 25,00. <br>
+              <b>Horários:</b> Sexta das 20h à 23h.
+            </span>
+            <a class="botaoForm preco" href="/">Quero Jogar!</a>
           </div>
         </div>
         <img src="img2.png" alt="historia zumbi" />
-      </a>
-      <a class="galeryLink">
-        <div id="img1" class="img"></div>
+      </div>
+      <div class="galeryLink">
+        <div id="img1" class="img">
+          <div>
+            <h1>Titulo</h1>
+            <span class="expandable" onclick="expandable('descricao','img1',1)">
+              <h2>Descrição</h2>
+              <h2 style="right: 7px">
+                <img src="setaBranca.ico"/>
+              </h2>
+            </span>
+            <span class="expandText descricao img1">
+              A Trilha de Aventuras Agentes da Guardabeira se passa em Absalom durante o Festival Radiante, uma celebração centenária que ocorre ao longo do verão. A campanha acompanha um grupo de guardas novatos que, com o tempo, se tornam a última esperança da cidade. Embora o festival sirva como pano de fundo, as datas dos eventos não são fixas, permitindo flexibilidade no ritmo da história, com espaço para pausas, recuperação e adaptação da narrativa.
+            </span>
+            <span class="expandable" style="margin-top: 10px; margin-bottom: 5px;" onclick="expandable('sistema','img1',1)">
+              <h2>Sistema</h2>
+              <h2 style="right: 7px">
+                <img src="setaBranca.ico"/>
+              </h2>
+            </span>
+            <span class="expandText sistema img1">
+              <b>Pathfinder 2e (<span style="color:#ee4908;">moderado</span>):</b> Tá cansado de personagem clichê em RPG de fantasia medieval? Quer ver um sistema onde tu pode criar um personagem <b>único</b>? Pathfinder 2ª edição é um RPG de fantasia tática com regras refinadas, criação de personagens flexível e combates estratégicos. Ideal para quem curte profundidade, personalização e decisões significativas em jogo.
+            </span>
+            <span class="expandable" style="margin-top: 10px; margin-bottom: 5px;" onclick="expandable('preco','img1',1)">
+              <h2>Preços e Horários</h2>
+              <h2 style="right: 7px">
+                <img src="setaBranca.ico"/>
+              </h2>
+            </span>
+            <span class="expandText preco img1">
+              <b>Preços:</b> R$ 30,00. <br>
+              <b>Horários:</b> Domingo das 20h à 23h.
+            </span>
+            <a class="botaoForm preco" href="/">Quero Jogar!</a>
+          </div>
+        </div>
         <img src="img4.png" alt="historia futurista" />
-      </a>
-      <a class="galeryLink">
-        <div id="img2" class="img"></div>
-        <img src="img1.png" alt="historia zumbi" />
-      </a>
+      </div>
+      <div class="galeryLink">
+        <div id="img2" class="img">
+          <div>
+            <h1>sol.apk</h1>
+            <span class="expandable" onclick="expandable('descricao','img2',2)">
+              <h2>Descrição</h2>
+              <h2 style="right: 7px">
+                <img src="setaBranca.ico"/>
+              </h2>
+            </span>
+            <span class="expandText descricao img2">
+              Imagine um mundo onde o neon invade as sombras da noite e os vampiros sobrevivem entre dados e circuitos. Um vírus desconhecido começa a eliminar membros do clã através de qualquer tecnologia. Você faz parte de um grupo convocado para investigar... mas cuidado: nesse futuro sombrio, nem os mortos estão a salvo.
+            </span>
+            <span class="expandable" style="margin-top: 10px; margin-bottom: 5px;" onclick="expandable('sistema','img2',2)">
+              <h2>Sistema</h2>
+              <h2 style="right: 7px">
+                <img src="setaBranca.ico"/>
+              </h2>
+            </span>
+            <span class="expandText sistema img2">
+              <b>Vampiro a Máscara 5ª Edição (<span style="color:#eeb808;">moderado leve</span>):</b> Vampiro: A Máscara 5ª Edição é um RPG de horror pessoal e intriga sobrenatural, onde você interpreta um vampiro dividido entre a sede de sangue e o que resta da sua humanidade, em um mundo sombrio cheio de política e segredos.
+            </span>
+            <span class="expandable" style="margin-top: 10px; margin-bottom: 5px;" onclick="expandable('preco','img2',2)">
+              <h2>Preços e Horários</h2>
+              <h2 style="right: 7px">
+                <img src="setaBranca.ico"/>
+              </h2>
+            </span>
+            <span class="expandText preco img2">
+              <b>Preços:</b> R$ 30,00 por sessão. <br>
+              <b>Horários:</b> Quartas das 20h à 23h. <br>
+              <b>Vagas:</b> 4/4. <br>
+              <b>Sessões:</b> 4 sessões.
+            </span>
+            <a class="botaoForm preco" href="/">Quero Jogar!</a>
+          </div>
+        </div>
+        <img
+          src="img5.png"
+          alt="vampiro cyberpunk"
+          aria-label="vampiro cyberpunk"
+        />
+      </div>
     </div>
     <div id="rodape">
-      <span class="pulse" aria-label="selecione seu mundo"
-        >SELECIONE SEU MUNDO!</span
-      >
+      <span class="pulse" aria-label="selecione seu mundo">
+        SELECIONE SEU MUNDO!
+      </span>
     </div>
   </body>
 </html>
 
 <script>
+  var arrayVisibility = [false, false, false]
+
   function pararAnimarEdesaparecer() {
     const el = document.querySelector("#rodape");
 
     // Remove a classe de animação pulse
     try {
-      //el.classList.remove("pulse");
-
-      // Força a opacidade atual antes da transição
-      //getComputedStyle(el).opacity;
-
       // Define a transição de opacidade
       el.style.transition = "opacity 1s ease";
       el.style.opacity = "0";
@@ -200,24 +338,70 @@
     } catch (error) {}
   }
 
+  function expandable(param,img,index) {
+    if (arrayVisibility[index]) {
+      menus = ['descricao', 'sistema', 'preco']
+      menus.forEach(el => {
+        if (el == param) {
+          document.querySelector('.'+el+'.'+img).style.display == 'block' ? document.querySelector('.'+el+'.'+img).style.display = 'none' : document.querySelector('.'+el+'.'+img).style. display = 'block';
+
+          if (innerWidth <= 768) {
+            document.querySelector('.'+el+'.'+img).previousElementSibling.querySelector('img').style.transform != 'translate(-50%, -50%) rotate(180deg)' ? document.querySelector('.'+el  +'.'+img).previousElementSibling.querySelector('img').style.transform = 'translate(-50%, -50%) rotate(180deg)' : document.querySelector('.'+el+'.'+img).  previousElementSibling.querySelector('img').style.transform = 'translate(-50%, -50%) rotate(0deg)';
+          }else{
+            document.querySelector('.'+el+'.'+img).previousElementSibling.querySelector('img').style.transform != 'rotate(180deg)' ? document.querySelector('.'+el+'.'+img).  previousElementSibling.querySelector('img').style.transform = 'rotate(180deg)' : document.querySelector('.'+el+'.'+img).previousElementSibling.querySelector('img').style.  transform = 'rotate(0deg)';
+          }
+        } else {
+          document.querySelector('.'+el+'.'+img).style.display = 'none';
+          if (innerWidth <= 768) {
+            document.querySelector('.'+el+'.'+img).previousElementSibling.querySelector('img').style.transform = 'translate(-50%, -50%) rotate(0deg)';
+          }else{
+            document.querySelector('.'+el+'.'+img).previousElementSibling.querySelector('img').style.transform = 'rotate(0deg)';
+          }
+        }
+      });
+    }    
+  }
+
   document.addEventListener("mouseover", (e) => {
     if (innerWidth <= 768) {
+      //celular
       for (let i = 0; i < 3; i++) {
-        if (e.target.id == "img" + i) {
+        if (e.target.id == "img" + i || e.target.closest("#img" + i) != null) {
+          //aumenta o quadrado
+          setTimeout(() => { arrayVisibility[i]=true; }, 500);
           document.querySelector("#img" + i).parentElement.style.height = "50%";
           document.querySelector("#img" + i).style.opacity = "0.75";
-        } else if (e.target.id.includes("img")) {
+          if (e.target.id == "img0" || e.target.closest("#img0") != null) {
+            //diminui o logo se clicar na primeira imagem
+            document.querySelector('[alt="logo"]').style.width = "100px";
+            document.querySelector('[alt="logo"]').style.marginTop = "14px";
+            document.querySelector("#logo").style.height = "65px";
+          }
+        } else if (
+          e.target.id.includes("img") ||
+          e.target.closest("[id*='img']") != null
+        ) {
+          //diminui os não clicados
+          arrayVisibility[i]=false;
           document.querySelector("#img" + i).parentElement.style.height = "25%";
           document.querySelector("#img" + i).style.opacity = "0";
+          if (e.target.id != "img0" && e.target.closest("#img0") == null) {
+            //aumenta o logo se não clicar na primeira imagem
+            document.querySelector('[alt="logo"]').style = "";
+            document.querySelector("#logo").style = "";
+          }
           pararAnimarEdesaparecer();
         }
       }
     } else {
+      //desktop
       for (let i = 0; i < 3; i++) {
         if (e.target.id == "img" + i) {
+          setTimeout(() => { arrayVisibility[i]=true; }, 500);
           document.querySelector("#img" + i).parentElement.style.width = "50%";
           document.querySelector("#img" + i).style.opacity = "0.75";
         } else if (e.target.id.includes("img")) {
+          arrayVisibility[i]=false;
           document.querySelector("#img" + i).parentElement.style.width = "25%";
           document.querySelector("#img" + i).style.opacity = "0";
           pararAnimarEdesaparecer();
