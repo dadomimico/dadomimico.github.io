@@ -52,6 +52,16 @@
         left: 50%;
         transform: translateX(-50%);
       }
+      .galeryLink img[src="imgIco.ico"] {
+        width: 40px;
+        right: 0;
+        z-index: 6;
+        bottom: 0;
+        left: auto;
+        top: auto;
+        transition: opacity 1s ease;
+        opacity: 0;
+      }
       #galeria {
         width: 100%;
         height: 100%;
@@ -181,6 +191,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="logoS.png">
   </head>
   <body>
     <div id="logo">
@@ -190,6 +201,7 @@
     </div>
     <div id="galeria">
       <div class="galeryLink">
+        <img src="imgIco.ico"/>
         <div id="img0" class="img">
           <div>
             <h1>Titulo</h1>
@@ -220,8 +232,10 @@
               </h2>
             </span>
             <span class="expandText preco img0">
-              <b>Preços:</b> R$ 25,00. <br>
-              <b>Horários:</b> Sexta das 20h à 23h.
+              <b>Preços:</b> R$ 25,00 por sessão. <br>
+              <b>Horários:</b> Sexta das 20h à 23h. <br>
+              <b>Vagas:</b> 4/4. <br>
+              <b>Sessões:</b> 4 sessões.
             </span>
             <a class="botaoForm preco" href="/">Quero Jogar!</a>
           </div>
@@ -229,9 +243,10 @@
         <img src="img2.png" alt="historia zumbi" />
       </div>
       <div class="galeryLink">
+        <img src="imgIco.ico"/>
         <div id="img1" class="img">
           <div>
-            <h1>Titulo</h1>
+            <h1>Agentes da Guardabeira</h1>
             <span class="expandable" onclick="expandable('descricao','img1',1)">
               <h2>Descrição</h2>
               <h2 style="right: 7px">
@@ -257,8 +272,10 @@
               </h2>
             </span>
             <span class="expandText preco img1">
-              <b>Preços:</b> R$ 30,00. <br>
-              <b>Horários:</b> Domingo das 20h à 23h.
+              <b>Preços:</b> R$ 30,00 por sessão. <br>
+              <b>Horários:</b> Domingo das 20h à 23h. <br>
+              <b>Vagas:</b> 4/4. <br>
+              <b>Sessões:</b> 4 sessões.
             </span>
             <a class="botaoForm preco" href="/">Quero Jogar!</a>
           </div>
@@ -266,6 +283,7 @@
         <img src="img4.png" alt="historia futurista" />
       </div>
       <div class="galeryLink">
+        <img src="imgIco.ico"/>
         <div id="img2" class="img">
           <div>
             <h1>sol.apk</h1>
@@ -368,9 +386,14 @@
       for (let i = 0; i < 3; i++) {
         if (e.target.id == "img" + i || e.target.closest("#img" + i) != null) {
           //aumenta o quadrado
+          document.querySelector("#img" + i).closest('.galeryLink').querySelector('[src="imgIco.ico"]').style.opacity = "0.75";
           setTimeout(() => { arrayVisibility[i]=true; }, 500);
-          document.querySelector("#img" + i).parentElement.style.height = "50%";
+          document.querySelector("#img" + i).parentElement.style.height = "70%";
           document.querySelector("#img" + i).style.opacity = "0.75";
+          setTimeout(() => {
+            document.querySelector("#img" + i).parentElement.lastElementChild.style.height = "100%";
+            document.querySelector("#img" + i).parentElement.lastElementChild.style.width = "auto";
+          }, 100);
           if (e.target.id == "img0" || e.target.closest("#img0") != null) {
             //diminui o logo se clicar na primeira imagem
             document.querySelector('[alt="logo"]').style.width = "100px";
@@ -382,9 +405,11 @@
           e.target.closest("[id*='img']") != null
         ) {
           //diminui os não clicados
+          document.querySelector("#img" + i).closest('.galeryLink').querySelector('[src="imgIco.ico"]').style.opacity = "0";
           arrayVisibility[i]=false;
           document.querySelector("#img" + i).parentElement.style.height = "25%";
           document.querySelector("#img" + i).style.opacity = "0";
+          document.querySelector("#img" + i).parentElement.lastElementChild.style = "";
           if (e.target.id != "img0" && e.target.closest("#img0") == null) {
             //aumenta o logo se não clicar na primeira imagem
             document.querySelector('[alt="logo"]').style = "";
@@ -397,10 +422,12 @@
       //desktop
       for (let i = 0; i < 3; i++) {
         if (e.target.id == "img" + i) {
+          document.querySelector("#img" + i).closest('.galeryLink').querySelector('[src="imgIco.ico"]').style.opacity = "0.75";
           setTimeout(() => { arrayVisibility[i]=true; }, 500);
           document.querySelector("#img" + i).parentElement.style.width = "50%";
           document.querySelector("#img" + i).style.opacity = "0.75";
         } else if (e.target.id.includes("img")) {
+          document.querySelector("#img" + i).closest('.galeryLink').querySelector('[src="imgIco.ico"]').style.opacity = "0";
           arrayVisibility[i]=false;
           document.querySelector("#img" + i).parentElement.style.width = "25%";
           document.querySelector("#img" + i).style.opacity = "0";
@@ -408,5 +435,21 @@
         }
       }
     }
+  });
+
+  document.addEventListener('mousedown', (ev) => {
+    try {
+      if (ev.target.src.includes('imgIco')) {
+        ev.target.nextElementSibling.style.opacity = '0';
+      }
+    } catch (error) { }
+  });
+
+  document.addEventListener('mouseup', (ev) => {
+    try {
+      if (ev.target.src.includes('imgIco')) {
+        ev.target.nextElementSibling.style.opacity = '0.75';
+      }
+    } catch (error) { }
   });
 </script>
