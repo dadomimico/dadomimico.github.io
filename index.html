@@ -454,10 +454,11 @@
   document.addEventListener('touchstart', (ev) => {
     try {
       if (ev.target.src.includes('imgIco')) {
+        ev.preventDefault();
         ev.target.nextElementSibling.style.opacity = '0';
       }
     } catch (error) { }
-  });
+  },{ passive: false });
   document.addEventListener('touchend', (ev) => {
     try {
       if (ev.target.src.includes('imgIco')) {
